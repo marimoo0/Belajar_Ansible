@@ -1,0 +1,36 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+    - name: Install updates (Ubuntu)
+      tags: always
+      apt:
+        upgrade: dist
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+
+- hosts: all
+  become: true
+  tasks:
+    - name: create marimo user
+      tags: always
+      user:
+        name: marimo
+        groups: root
+
+    - name: add ssh key for marimo
+      tags: always
+      authorized_key:
+        user: marimo
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMi8lnr2FdRUnBe/9VCTjBaPHWYaxUK7MzrUkemTtKRK ansible"
+
+    - name: add sudoers file for marimo
+      tags: always
+      copy:
+        src: sudoer_marimo
+        dest: /etc/sudoers.d/marimo
+        owner: root
+        group: root
+        mode: 0440
+

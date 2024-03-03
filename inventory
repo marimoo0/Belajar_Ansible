@@ -3,3 +3,7 @@ kana@192.168.198.134
 
 [db_servers]
 kana@192.168.198.135
+
+[workstations]
+kana@192.168.198.133
+
