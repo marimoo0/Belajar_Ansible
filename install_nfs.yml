@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+    - name: Install NFS server
+      package:
+        name: nfs-kernel-server
+        state: present
+
+    - name: start dan enable
+      service:
+        name: nfs-kernel-server
+        state: started
+        enabled: yes
