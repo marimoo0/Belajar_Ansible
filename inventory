@@ -1,10 +1,11 @@
 [web_servers]
-kana@192.168.198.134
+kana@192.168.198.129
 
 [db_servers]
-kana@192.168.198.135
+kana@192.168.198.130
+
+[file_server]
+kana@192.168.198.131
 
 [workstations]
-kana@192.168.198.133
-kana@192.168.198.132
-
+workstation@192.168.198.128
